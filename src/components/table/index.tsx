@@ -162,7 +162,7 @@ const CustomPaginationActionsTable: React.FC = () => {
     <>
       <div ref={componentRef}>
         <h1>Dessert Calories Table</h1>
-        <TableContainer component={Paper}></TableContainer>
+        <TableContainer component={Paper}>
           <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
             <TableHead>
               <TableRow>
