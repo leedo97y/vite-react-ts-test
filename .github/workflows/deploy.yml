@@ -1,5 +1,5 @@
-name: Deploy # Workflow 이름.
-on: # CICD 이벤트 감지.
+name: Deploy
+on: 
   push:
     branches:
       - master 
