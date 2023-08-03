@@ -32,4 +32,4 @@ jobs:
           --application-name test-CodeDeploy-dy 
           --deployment-config-name CodeDeployDefault.AllAtOnce 
           --deployment-group-name test-deployGroup-1 
-          --s3-location bucket=test-s3-doylee-1/test-build.zip ,bundleType=zip 
+          --s3-location bucket=test-s3-doylee-1,key=test-build.zip,bundleType=zip 
