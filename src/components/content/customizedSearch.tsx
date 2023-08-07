@@ -158,6 +158,7 @@ const StyleP = styled('p')(
   `padding: 3px;
    padding-bottom: 0;
    font-weight: 500;
+   color: #0078d4;
   `
 )
 
