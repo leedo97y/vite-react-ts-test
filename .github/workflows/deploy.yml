@@ -3,6 +3,13 @@ on:
   push:
     branches:
       - master
+
+env: 
+  S3_BUCKET_NAME: test-mybucket-doyeon
+  CODE_DEPLOY_APPLICATION_NAME: test-reactApp-code-deploy
+  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: test-reactApp-deploy-group
+
+
 jobs:
   build: 
     runs-on: ubuntu-20.04
@@ -16,7 +23,7 @@ jobs:
       - name: Build
         run: yarn run build
       - name: Zip create
-        run: zip -qq -r ./test-build.zip .
+        run: zip -qq -r ./$GITHUB_SHA.zip .
         shell: bash
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -26,10 +33,10 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Upload to S3
         run: |
-          aws s3 cp --region ap-northeast-2 ./test-build.zip s3://test-mybucket-doyeon/test-build.zip
+          aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://test-mybucket-doyeon/$GITHUB_SHA.zip
       - name: Deploy
         run: aws deploy create-deployment
-          --application-name test-reactApp-code-deploy
+          --application-name ${{ env.CODE_DEPLOY_APPLICATION_NAME }}
           --deployment-config-name CodeDeployDefault.AllAtOnce
-          --deployment-group-name test-reactApp-deploy-group
-          --s3-location bucket=test-mybucket-doyeon,key=test-build.zip,bundleType=zip
+          --deployment-group-name ${{ env.CODE_DEPLOY_DEPLOYMENT_GROUP_NAME }}
+          --s3-location bucket=$S3_BUCKET_NAME,key=$GITHUB_SHA.zip,bundleType=zip
