@@ -19,7 +19,7 @@ jobs:
       - name: Check Node -V
         run: node -v
       - name: Install Dependencies
-        run: yarn install && npm install
+        run: yarn install
       - name: Build
         run: yarn build
       - name: Zip create
