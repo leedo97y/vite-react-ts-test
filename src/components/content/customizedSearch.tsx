@@ -154,6 +154,13 @@ const Listbox = styled('ul')(
 `,
 );
 
+const StyleP = styled('p')(
+  `padding: 3px;
+   padding-bottom: 0;
+   font-weight: 500;
+  `
+)
+
 const CustomizedSearch = () => {
   const {
     getRootProps,
@@ -196,7 +203,7 @@ const CustomizedSearch = () => {
         </Listbox>
       ) : null}
       <div>{value.map((option: FilmOptionType, index: number) => (
-        <p {...getTagProps({index})}>{option.title}, {option.year}</p>
+        <StyleP {...getTagProps({index})}>{option.title}, {option.year}</StyleP>
       ))}</div>
     </Root>
   );
