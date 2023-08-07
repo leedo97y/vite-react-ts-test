@@ -5,6 +5,6 @@ cd $REPOSITORY
 
 sudo yarn install
 
-sudo yarn build
+sudo npm install
 
 sudo systemctl start nginx
