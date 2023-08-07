@@ -61,7 +61,7 @@ interface TagProps extends ReturnType<AutocompleteGetTagProps> {
   label: string;
 }
 
-function Tag(props: TagProps) {
+const Tag = (props: TagProps) => {
   const { label, onDelete, ...other } = props;
   return (
     <div {...other}>
@@ -162,7 +162,7 @@ const StyleP = styled('p')(
   `
 )
 
-const CustomizedSearch = () => {
+const CustomizedSearch:React.FC = () => {
   const {
     getRootProps,
     getInputLabelProps,
