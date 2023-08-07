@@ -195,6 +195,9 @@ const CustomizedSearch = () => {
           ))}
         </Listbox>
       ) : null}
+      <div>{value.map((option: FilmOptionType, index: number) => (
+        <p {...getTagProps({index})}>{option.title}, {option.year}</p>
+      ))}</div>
     </Root>
   );
 }
