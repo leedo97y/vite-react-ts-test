@@ -7,4 +7,4 @@ sudo yarn install
 
 sudo npm install
 
-sudo systemctl start nginx
+sudo systemctl reload nginx
