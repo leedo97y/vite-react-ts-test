@@ -12,9 +12,9 @@ jobs:
       - name: Check Node -V
         run: node -v
       - name: Install Dependencies
-        run: npm install && yarn install
+        run: yarn install
       - name: Build
-        run: npm run build
+        run: yarn run build
       - name: Zip create
         run: zip -qq -r ./test-build.zip .
         shell: bash
