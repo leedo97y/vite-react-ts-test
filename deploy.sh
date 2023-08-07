@@ -5,4 +5,4 @@ cd $REPOSITORY
 
 sudo yarn install
 
-sudo systemctl reload nginx
+sudo systemctl restart nginx
