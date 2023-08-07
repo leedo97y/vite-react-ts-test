@@ -6,8 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build:{
     rollupOptions: {
-      external:  ['react', "react/jsx-runtime", 'react-dom'],
-    
+      external:  ['react', "react/jsx-runtime", 'react-dom/client'],
     },
     
   }
