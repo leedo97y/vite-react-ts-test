@@ -4,9 +4,9 @@ import react from "@vitejs/plugin-react"
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  build:{
-    rollupOptions: {
-      external:  ["react", "react/jsx-runtime", "react-dom/client", "react-dom"],
-    },
-  }
+  // build:{
+  //   rollupOptions: {
+  //     external:  ["react", "react-dom/client", "react-dom"],
+  //   },
+  // }
 })
