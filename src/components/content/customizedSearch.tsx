@@ -4,6 +4,8 @@ import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import { styled } from '@mui/material/styles';
 import { autocompleteClasses } from '@mui/material/Autocomplete';
+import { useReactToPrint } from 'react-to-print';
+import { useRef } from 'react';
 
 const Root = styled('div')(
   ({ theme }) => `
@@ -182,6 +184,13 @@ const CustomizedSearch:React.FC = () => {
     getOptionLabel: (option) => option.title,
   });
 
+  const listRef = useRef(null);
+
+  const onClickPrintList = useReactToPrint({
+    content: () => listRef.current,
+    documentTitle: "list",
+  });
+
   return (
     <Root>
       <div {...getRootProps()}>
@@ -203,9 +212,15 @@ const CustomizedSearch:React.FC = () => {
           ))}
         </Listbox>
       ) : null}
-      <div>{value.map((option: FilmOptionType, index: number) => (
-        <StyleP {...getTagProps({index})}>{option.title}, {option.year}</StyleP>
-      ))}</div>
+      <div>
+        <div ref={listRef}>
+          {value.map((option: FilmOptionType, index: number) => (
+          <StyleP {...getTagProps({index})}>{option.title}, {option.year}</StyleP>))
+          }
+        </div>
+        <button onClick={onClickPrintList}>Print list</button>
+      </div>
+      
     </Root>
   );
 }
